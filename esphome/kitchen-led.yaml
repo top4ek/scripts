@@ -1,0 +1,192 @@
+substitutions:
+  device_description: "Kitchen LED lights"
+  name: kitchen-led
+  uv_time: "600"
+  num_leds: "62"
+
+esphome:
+  name: ${name}
+  friendly_name: ${name}
+
+esp8266:
+  board: nodemcuv2
+  
+logger:
+  level: INFO
+
+ota:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "Kitchen-Led Fallback Hotspot"
+    password: !secret wifi_fallback_password
+
+captive_portal:
+web_server:
+  port: 80
+
+mqtt:
+  broker: !secret mqtt_server
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  discovery: false
+  reboot_timeout: 0s
+  birth_message:
+    topic: "${name}/sensor/state"
+    payload: online
+  will_message:
+    topic: "${name}/sensor/state"
+    payload: offline
+  shutdown_message:
+    topic: "${name}/sensor/state"
+    payload: shutdown
+
+globals:
+  - id: var_global_switch
+    type: bool
+    restore_value: yes
+    initial_value: "false"
+
+number:
+  - platform: template
+    id: uv_time_left
+    name: "${device_description} UV Time Left"
+    step: 1
+    min_value: 0
+    max_value: "${uv_time}"
+    mode: slider
+    optimistic: true
+    on_value:
+      then:
+        - if:
+            condition:
+              and:
+              - switch.is_off: global_switch 
+              - lambda: 'return id(uv_time_left).state != 0;'
+            then:
+              - light.turn_on:
+                  id: uv_light
+            else: 
+              - light.turn_off:
+                  id: uv_light
+            
+switch: 
+  - platform: template
+    name: "${device_description} global switch" 
+    id: global_switch
+    device_class: switch
+    restore_mode: ALWAYS_OFF
+    lambda: |-
+      if (id(var_global_switch)) {
+        return true;
+      } else {
+        return false;
+      }      
+    turn_on_action:
+      - globals.set:
+          id: var_global_switch
+          value: "true"
+      - light.turn_on: 
+          id: led
+          effect: "None"
+          brightness: 100%
+          red: 100%
+          green: 81%
+          blue: 65%
+      - light.turn_off: uv_light
+    turn_off_action:
+      - light.turn_on: 
+          id: led
+          effect: "Random Twinkle"
+          brightness: 100%
+      - globals.set:
+          id: var_global_switch
+          value: "false"
+
+button:
+  - platform: restart
+    name: "${device_description} Restart"
+    retain: false
+
+dallas:
+  - pin: D6
+
+output:
+  - id: pwm_output 
+    platform: esp8266_pwm
+    pin: D5
+    frequency: 100 Hz
+
+sensor:
+  - platform: dallas
+    address: 0x060315639e9aff28
+    name: "${device_description} Temperature"
+  - platform: wifi_signal
+    name: "${device_description} WiFi Signal"
+    update_interval: 60s   
+
+text_sensor:
+  - platform: version
+    name: "${device_description} firmware version"
+    id: firmware_version
+
+light:
+  - name: ${device_description} Monochromatic UV Light
+    id: uv_light
+    platform: monochromatic
+    output: pwm_output
+
+  - platform: neopixelbus
+    type: GRB
+    id: led
+    variant: WS2811
+    pin: D7
+    num_leds: "${num_leds}"
+    name: "${device_description} NeoPixel Light"
+    restore_mode: ALWAYS_OFF
+    effects:
+      - addressable_rainbow:        
+      - addressable_twinkle:
+      - addressable_random_twinkle:
+      - addressable_fireworks:
+      - addressable_flicker:
+      - addressable_color_wipe:
+      - addressable_scan:      
+
+time:
+  - platform: sntp
+    timezone: MSK-3
+    update_interval: 15min
+    servers:
+      - !secret ntp_server
+      - 0.pool.ntp.org
+      - 1.pool.ntp.org
+    on_time_sync:
+      then:
+        - logger.log: "Synchronized system clock"
+    on_time:
+      - seconds: '*'
+        minutes: '*'
+        hours: '*'
+        then:
+          - if:
+              condition:
+                and: 
+                - switch.is_off: global_switch 
+                - lambda: 'return id(uv_time_left).state != 0;'
+              then:
+                - number.decrement: 
+                    id: uv_time_left
+                    cycle: false
+
+      - seconds: 0
+        minutes: 0
+        hours: '*'
+        then:
+          - logger.log: "Adding UV time"
+          - number.set:
+              id: uv_time_left
+              value: "${uv_time}"
