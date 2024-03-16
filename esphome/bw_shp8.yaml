@@ -1,0 +1,97 @@
+substitutions:
+  plug_name: bw_shp8
+  current_res: "0.0023"
+  voltage_div: "760"
+
+esphome:
+  name: bwsocket
+  platform: ESP8266
+  board: esp8285
+
+logger:
+  level: INFO
+
+api:
+ota:
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "Bwsocket Fallback Hotspot"
+    password: !secret wifi_fallback_password
+
+binary_sensor:
+  - platform: gpio
+    name: ${plug_name}_button
+    pin:
+      number: GPIO3
+      mode: INPUT_PULLUP
+      inverted: True
+    on_press:
+      - switch.toggle: relay
+
+switch:
+  - platform: gpio
+    name: ${plug_name}_relay
+    pin: GPIO14
+    id: relay
+    restore_mode: RESTORE_DEFAULT_OFF
+    on_turn_on:
+      - switch.turn_on: red_led
+      - switch.turn_off: blue_led
+    on_turn_off:
+      - switch.turn_off: red_led
+      - switch.turn_on: blue_led
+
+  - platform: gpio
+    id: blue_led
+    name: ${plug_name}_LED_Blue
+    icon: mdi:led-on
+    pin: 
+      number: GPIO13
+      inverted: True
+
+  - platform: gpio
+    id: red_led
+    name: ${plug_name}_LED_Red
+    icon: mdi:led-on
+    restore_mode: ALWAYS_OFF
+    pin: 
+      number: GPIO01
+      inverted: True
+
+sensor:
+  - platform: hlw8012
+    sel_pin: 
+      number: GPIO12
+      inverted: True
+    cf_pin: GPIO04
+    cf1_pin: GPIO05
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    current:
+      name: ${plug_name}_current
+      icon: mdi:current-ac
+      unit_of_measurement: A
+    voltage:
+      name: ${plug_name}_voltage
+      icon: mdi:flash-circle
+      unit_of_measurement: V
+    power:
+      name: ${plug_name}_power
+      icon: mdi:flash-outline
+      unit_of_measurement: W
+    change_mode_every: 8
+    update_interval: 10s
+ 
+  - platform: uptime
+    name: ${plug_name}_Uptime
+
+  - platform: wifi_signal
+    name: ${plug_name}_Wi-Fi_Signal
+    update_interval: 60s
+
+text_sensor:
+  - platform: version
+    name: ${plug_name}_firmware_version
