@@ -1,0 +1,60 @@
+substitutions:
+  name: bn-sz01
+  
+esphome:
+  name: "${name}"
+  platform: ESP8266
+  board: esp8285
+
+logger:
+
+ota:
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "Roundlamp Fallback Hotspot"
+    password: !secret wifi_fallback_password
+
+mqtt:
+  broker: !secret mqtt_server
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  discovery: false
+
+  birth_message:
+    topic: "${name}/sensor/state"
+    payload: online
+  will_message:
+    topic: "${name}/sensor/state"
+    payload: offline
+  shutdown_message:
+    topic: "${name}/sensor/state"
+    payload: shotdown
+
+sensor:
+  - platform: wifi_signal
+    name: "Round Lamp WiFi Signal"
+    update_interval: 60s
+    
+text_sensor:
+  - platform: version
+    name: Entrance firmware version
+    id: firmware_version
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
+
+output:
+  - platform: esp8266_pwm
+    pin: GPIO12
+    frequency: 100 Hz
+    id: pwm_output
+
+light:
+  - platform: monochromatic
+    output: pwm_output
+    name: "Round Lamp Light"
