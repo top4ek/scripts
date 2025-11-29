@@ -48,7 +48,7 @@ switch:
     id: blue_led
     name: ${plug_name}_LED_Blue
     icon: mdi:led-on
-    pin: 
+    pin:
       number: GPIO13
       inverted: True
 
@@ -57,13 +57,13 @@ switch:
     name: ${plug_name}_LED_Red
     icon: mdi:led-on
     restore_mode: ALWAYS_OFF
-    pin: 
+    pin:
       number: GPIO01
       inverted: True
 
 sensor:
   - platform: hlw8012
-    sel_pin: 
+    sel_pin:
       number: GPIO12
       inverted: True
     cf_pin: GPIO04
@@ -84,7 +84,7 @@ sensor:
       unit_of_measurement: W
     change_mode_every: 8
     update_interval: 10s
- 
+
   - platform: uptime
     name: ${plug_name}_Uptime
 

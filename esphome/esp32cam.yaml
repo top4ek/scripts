@@ -74,7 +74,7 @@ button:
 sensor:
   - platform: wifi_signal
     name: "${friendly_name} WiFi Signal"
-    update_interval: 60s      
+    update_interval: 60s
 
 esp32_camera:
   name: "${friendly_name}"
@@ -89,8 +89,8 @@ esp32_camera:
   href_pin: GPIO23
   pixel_clock_pin: GPIO22
   power_down_pin: GPIO32
-  max_framerate: 10 fps   
-  idle_framerate: 1 fps 
+  max_framerate: 10 fps
+  idle_framerate: 1 fps
   resolution: 1024x768
   jpeg_quality: 10
   # on_stream_start:

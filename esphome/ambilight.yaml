@@ -39,7 +39,7 @@ ota:
 
 e131:
   method: multicast
-  
+
 text_sensor:
   - platform: version
     name: Ambilight firmware version

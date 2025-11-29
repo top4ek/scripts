@@ -1,6 +1,6 @@
 substitutions:
   name: bn-sz01
-  
+
 esphome:
   name: "${name}"
   platform: ESP8266
@@ -37,7 +37,7 @@ sensor:
   - platform: wifi_signal
     name: "Round Lamp WiFi Signal"
     update_interval: 60s
-    
+
 text_sensor:
   - platform: version
     name: Entrance firmware version
