@@ -1,0 +1,551 @@
+{
+  "name": "Кормушка",
+  "manufacturer": "PetKit",
+  "model": "ESPHome",
+  "modelIds": [
+    "esphome/(.*)/number/manual_dispense_scoops"
+  ],
+  "options": [
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/low_food_threshold/state",
+          "topicSet": "esphome/(1)/number/low_food_threshold/command"
+        }
+      ],
+      "type": "Double",
+      "name": "Empty food container treshhold",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 1
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/manual_dispense_scoops/state",
+          "topicSet": "esphome/(1)/number/manual_dispense_scoops/command"
+        }
+      ],
+      "type": "Double",
+      "name": "Manual dispence scoops",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 1
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/00_00_cups/state",
+          "topicSet": "esphome/(1)/number/00_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "00",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/01_00_cups/state",
+          "topicSet": "esphome/(1)/number/01_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "01",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/02_00_cups/state",
+          "topicSet": "esphome/(1)/number/02_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "02",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/03_00_cups/state",
+          "topicSet": "esphome/(1)/number/03_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "03",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/04_00_cups/state",
+          "topicSet": "esphome/(1)/number/04_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "04",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/05_00_cups/state",
+          "topicSet": "esphome/(1)/number/05_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "05",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/06_00_cups/state",
+          "topicSet": "esphome/(1)/number/06_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "06",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/07_00_cups/state",
+          "topicSet": "esphome/(1)/number/07_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "07",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/08_00_cups/state",
+          "topicSet": "esphome/(1)/number/08_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "08",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/09_00_cups/state",
+          "topicSet": "esphome/(1)/number/09_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "09",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/10_00_cups/state",
+          "topicSet": "esphome/(1)/number/10_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "10",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/11_00_cups/state",
+          "topicSet": "esphome/(1)/number/11_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "11",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/12_00_cups/state",
+          "topicSet": "esphome/(1)/number/12_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "12",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/13_00_cups/state",
+          "topicSet": "esphome/(1)/number/13_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "13",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/14_00_cups/state",
+          "topicSet": "esphome/(1)/number/14_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "14",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/15_00_cups/state",
+          "topicSet": "esphome/(1)/number/15_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "15",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/16_00_cups/state",
+          "topicSet": "esphome/(1)/number/16_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "16",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/17_00_cups/state",
+          "topicSet": "esphome/(1)/number/17_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "17",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/18_00_cups/state",
+          "topicSet": "esphome/(1)/number/18_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "18",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/19_00_cups/state",
+          "topicSet": "esphome/(1)/number/19_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "19",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/20_00_cups/state",
+          "topicSet": "esphome/(1)/number/20_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "20",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/21_00_cups/state",
+          "topicSet": "esphome/(1)/number/21_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "21",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/22_00_cups/state",
+          "topicSet": "esphome/(1)/number/22_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "22",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "Double",
+          "topicGet": "esphome/(1)/number/23_00_cups/state",
+          "topicSet": "esphome/(1)/number/23_00_cups/command"
+        }
+      ],
+      "type": "Double",
+      "name": "23",
+      "inputType": "NUMBER",
+      "minStep": 1,
+      "maxValue": 8,
+      "minValue": 0,
+      "value": 0
+    }
+  ],
+  "services": [
+    {
+      "type": "Switch",
+      "name": "Беззвучный режим",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "esphome/(1)/switch/mute_sounds/state",
+              "topicSet": "esphome/(1)/switch/mute_sounds/command",
+              "map": {
+                "false": "OFF",
+                "true": "ON"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "C_PetFeeder",
+      "name": "Кормушка",
+      "characteristics": [
+        {
+          "type": "On",
+          "name": "Дополнительня порция",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "esphome/(1)/button/dispense_food/command",
+              "topicSet": "esphome/(1)/button/dispense_food/command",
+              "map": {
+                "true": "PRESS",
+                "false": "RELEASE"
+              }
+            }
+          ],
+          "data": {
+            "SwitchOffTime": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Перезагрузить",
+      "visible": false,
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "esphome/(1)/button/restart",
+              "topicSet": "esphome/(1)/button/restart/command",
+              "map": {
+                "true": "PRESS",
+                "false": "RELEASE"
+              }
+            }
+          ],
+          "data": {
+            "SwitchOffTime": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Всего кусочков",
+      "visible": false,
+      "type": "C_PulseMeter",
+      "characteristics": [
+        {
+          "type": "C_PulseCount",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "esphome/(1)/sensor/dispensed_food_quantity/state"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Выдано порций",
+      "visible": false,
+      "type": "C_PulseMeter",
+      "characteristics": [
+        {
+          "type": "C_PulseCount",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "esphome/(1)/sensor/dispensed_food_scoops/state"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AccessoryInformation",
+      "characteristics": [
+        {
+          "type": "FirmwareRevision",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "esphome/(1)/sensor/firmware_version"
+            }
+          ]
+        },
+        {
+          "type": "C_Online",
+          "link": [
+            {
+              "type": "Boolean",
+              "topicGet": "esphome/(1)/binary_sensor/online"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
