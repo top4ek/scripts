@@ -1,0 +1,505 @@
+{
+  "name": "AWTRIX 3",
+  "manufacturer": "Ulanzi",
+  "model": "TC001",
+  "modelIds": [
+    "awtrix_([0-9a-z]{6})/stats"
+  ],
+  "options": [
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).TEFF",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({TEFF: value})"
+        }
+      ],
+      "name": "Эффект перехода",
+      "type": "Integer",
+      "init": true,
+      "visible": true,
+      "value": 1,
+      "values": [
+        {
+          "value": 0,
+          "name": "Случайно"
+        },
+        {
+          "value": 1,
+          "name": "Скольжение"
+        },
+        {
+          "value": 2,
+          "name": "Затемнение"
+        },
+        {
+          "value": 3,
+          "name": "Увеличение"
+        },
+        {
+          "value": 4,
+          "name": "Поворот"
+        },
+        {
+          "value": 5,
+          "name": "Пиксели"
+        },
+        {
+          "value": 6,
+          "name": "Занавес"
+        },
+        {
+          "value": 7,
+          "name": "Рябь"
+        },
+        {
+          "value": 8,
+          "name": "Мерцание"
+        },
+        {
+          "value": 9,
+          "name": "Перезарядка"
+        },
+        {
+          "value": 10,
+          "name": "Затухание"
+        }
+      ]
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).DFORMAT",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({DFORMAT: value})"
+        }
+      ],
+      "name": "Формат дат",
+      "type": "String",
+      "visible": true,
+      "value": "%d.%m.%y",
+      "values": [
+        {
+          "value": "%d.%m.%y",
+          "name": "День.Месяц.Год (26.04.15)"
+        },
+        {
+          "value": "%y-%m-%d",
+          "name": "Год-Месяц-День (25-04-16)"
+        },
+        {
+          "value": "%m-%d",
+          "name": "Месяц-День (04-16)"
+        },
+        {
+          "value": "%m/%d/%y",
+          "name": "Месяц/День/Год (04/16/25"
+        },
+        {
+          "value": "%m/%d",
+          "name": "Месяц/День (04/16)"
+        },
+        {
+          "value": "%d/%m/%y",
+          "name": "День/Месяц/Год (16/04/25)"
+        },
+        {
+          "value": "%d/%m",
+          "name": "День/Месяц (16/04)"
+        },
+        {
+          "value": "%m-%d-%y",
+          "name": "Месяц-День-Год (04-16-25)"
+        }
+      ]
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).TFORMAT",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({TFORMAT: value})"
+        }
+      ],
+      "name": "Формат времени",
+      "type": "String",
+      "visible": true,
+      "value": "%H %M",
+      "values": [
+        {
+          "value": "%H:%M:%S",
+          "name": "24 часа с секундами (13:30:45)"
+        },
+        {
+          "value": "%l:%M:%S",
+          "name": "12 часов с секундами (1:30:45)"
+        },
+        {
+          "value": "%H:%M",
+          "name": "24 часа (13:30)"
+        },
+        {
+          "value": "%H %M",
+          "name": "24 часа с точками (13.30)"
+        },
+        {
+          "value": "%l:%M",
+          "name": "12 часов (1:30)"
+        },
+        {
+          "value": "%l %M",
+          "name": "12 часов с точками (1:30)"
+        },
+        {
+          "value": "%l:%M %p",
+          "name": "12 часов c AM/PM (1:30 PM)"
+        },
+        {
+          "value": "%l %M %p",
+          "name": "12 часов c AM/PM c точками (1.30 PM)"
+        }
+      ]
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).WD",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({WD: value})"
+        }
+      ],
+      "name": "Отображать день недели",
+      "type": "Boolean",
+      "init": true,
+      "visible": true
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).TSPEED",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({TSPEED: value})"
+        }
+      ],
+      "name": "Время эффекта переключения",
+      "type": "Integer",
+      "unit": "мс",
+      "maxValue": 5000,
+      "minValue": 0,
+      "minStep": 10,
+      "value": 500
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).SSPEED",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({SSPEED: value})"
+        }
+      ],
+      "name": "Скорость скроллинга",
+      "type": "Integer",
+      "unit": "%",
+      "maxValue": 100,
+      "minValue": 0,
+      "minStep": 1,
+      "value": 100
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).ATIME",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({ATIME: value})"
+        }
+      ],
+      "name": "Время показа приложения",
+      "type": "Integer",
+      "maxValue": 60,
+      "minValue": 1,
+      "value": 7
+    },
+    {
+      "link": [
+        {
+          "type": "Integer",
+          "topicGet": "awtrix_(1)/settings",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({VOL: value})",
+          "inFunc": "JSON.parse(value).VOL"
+        }
+      ],
+      "name": "Громкость",
+      "type": "Integer",
+      "maxValue": 30,
+      "minValue": 0,
+      "value": 0
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({BRI: value})",
+          "inFunc": "JSON.parse(value).BRI"
+        }
+      ],
+      "name": "Яркость",
+      "type": "Integer",
+      "maxValue": 255,
+      "minValue": 0,
+      "value": 128
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).ABRI",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({ABRI: value})"
+        }
+      ],
+      "name": "Автоматическая яркость",
+      "type": "Boolean"
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).SOM",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({SOM: value})"
+        }
+      ],
+      "name": "Начало недели — понедельник",
+      "type": "Boolean",
+      "init": true,
+      "visible": true
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).CEL",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({CEL: value})"
+        }
+      ],
+      "name": "Температура в Цельсиях",
+      "type": "Boolean",
+      "init": true,
+      "visible": true
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "inFunc": "JSON.parse(value).BLOCKN",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({BLOCKN: value})"
+        }
+      ],
+      "name": "Заблокировать аппаратные кнопки",
+      "type": "Boolean",
+      "init": true,
+      "visible": true
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/stats/currentApp",
+          "topicSet": "awtrix_(1)/switch",
+          "outFunc": "JSON.stringify({name: value})"
+        }
+      ],
+      "name": "Приложение",
+      "type": "String",
+      "init": true,
+      "visible": true,
+      "value": "Time",
+      "values": [
+        {
+          "value": "Time",
+          "name": "Часы"
+        },
+        {
+          "value": "Date",
+          "name": "Дата"
+        },
+        {
+          "value": "Temperature",
+          "name": "Темрература"
+        },
+        {
+          "value": "Humidity",
+          "name": "Влажность"
+        },
+        {
+          "value": "Battery",
+          "name": "Аккумулятор"
+        }
+      ]
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "awtrix_(1)/settings",
+          "topicSet": "awtrix_(1)/settings",
+          "outFunc": "JSON.stringify({OVERLAY: value})",
+          "inFunc": "JSON.parse(value).OVERLAY"
+        }
+      ],
+      "name": "Оверлей",
+      "type": "String",
+      "init": true,
+      "visible": true,
+      "value": "clear",
+      "values": [
+        {
+          "value": "clear",
+          "name": "Без оверлея"
+        },
+        {
+          "value": "snow",
+          "name": "Снег"
+        },
+        {
+          "value": "rain",
+          "name": "Дождь"
+        },
+        {
+          "value": "drizzle",
+          "name": "Морось"
+        },
+        {
+          "value": "storm",
+          "name": "Шторм"
+        },
+        {
+          "value": "thunder",
+          "name": "Гроза"
+        },
+        {
+          "value": "frost",
+          "name": "Заморозки"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "type": "AccessoryInformation",
+      "characteristics": [
+        {
+          "type": "FirmwareRevision",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "awtrix_(1)/stats",
+              "inFunc": "JSON.parse(value).version"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LightSensor",
+      "characteristics": [
+        {
+          "type": "CurrentAmbientLightLevel",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "awtrix_(1)/stats",
+              "inFunc": "JSON.parse(value).lux"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "HumiditySensor",
+      "characteristics": [
+        {
+          "type": "CurrentRelativeHumidity",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "awtrix_(1)/stats",
+              "inFunc": "JSON.parse(value).hum"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "awtrix_(1)/stats",
+              "inFunc": "JSON.parse(value).temp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "name": "Дисплей",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "awtrix_(1)/settings",
+              "topicSet": "awtrix_(1)/power",
+              "outFunc": "JSON.stringify({power: value})",
+              "inFunc": "JSON.parse(value).MATP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BatteryService",
+      "characteristics": [
+        {
+          "type": "BatteryLevel",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "awtrix_(1)/stats",
+              "inFunc": "JSON.parse(value).bat"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
